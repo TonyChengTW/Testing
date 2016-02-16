@@ -1,2 +1,4 @@
-__author__ = 'Tony'
-
+#__author__ = 'Tony'
+name = input('what is your first name? ')
+#print('hello' + name.capitalize() + '!')
+print(name)
