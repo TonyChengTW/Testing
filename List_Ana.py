@@ -6,6 +6,7 @@ def eat_vowerls(s):
     """
     return ''.join([c for c in s if c.lower() not in 'a'])
 
-print [n * n for n in range(1, 11)]
-print [a for a in 'pizza']
-print eat_vowerls('apple')
+if __name__ == '__main__':
+    print [n * n for n in range(1, 11)]
+    print [a for a in 'pizza']
+    print eat_vowerls('apple')
