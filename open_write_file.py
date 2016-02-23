@@ -1,6 +1,5 @@
 __author__ = 'Tony'
 import os
-from __future__ import print_function
 
 def print_file1(fname):
     """
@@ -17,12 +16,20 @@ def make_file2(fname):
     :return:
     """
     if os.path.isfile(fname):
-        print('The file is exist', end = '')
+        print('The file is exist')
     else:
         f2 = open(fname, 'w')
         f2.write('Mary\n')
         f2.write('Tommy\n')
 
+def append_file3(fname, title):
+    f3 = open(fname, 'r+')
+    temp = f3.read()
+    temp = title + '\n\n' + temp
+    f3.seek(0)
+    f3.write(temp)
+
 if __name__ == '__main__':
     print_file1('C:\\11.txt')
     make_file2('C:\\Users\\tony\\Desktop\\22.txt')
+    append_file3('C:\\Users\\tony\\Desktop\\22.txt', 'title is here')
