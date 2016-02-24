@@ -12,14 +12,11 @@ class Person2(object):
     def name(self, realname):
         self.__name = realname
 
-    def __str__(self):
-        return "name=%s" % self.name
-
 p = Person2()
-print "default:", p
+print "default name :", p.name
 
 p.name = 'Emily'
-print "change: ", p
+print "change name : ", p.name
 print dir(p)
 
 #==========
