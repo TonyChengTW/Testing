@@ -12,6 +12,7 @@ class Person2(object):
     def name(self, realname):
         self.__name = realname
 
+
 p = Person2()
 print "default name :", p.name
 
