@@ -1,6 +1,6 @@
 __author__ = 'Tony'
 
-import os
+import os, time, datetime
 
 filepath = 'D:/source/Testing/modules/os/path.py'
 
@@ -13,3 +13,5 @@ print 'abspath = ' + os.path.abspath('../..')
 print 'split = ' , os.path.split(filepath)
 print 'dirname = ', os.path.dirname(filepath)
 print 'commonprefix = ', os.path.commonprefix(['/home/td','/home/td/ff','/home/td/fff'])
+print 'exists = ', os.path.exists(filepath)
+
