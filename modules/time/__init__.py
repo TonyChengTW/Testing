@@ -1,0 +1,1 @@
+from time1 import time1_func

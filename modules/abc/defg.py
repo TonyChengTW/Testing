@@ -1,7 +1,5 @@
 __author__ = 'Tony'
-
 import time
-
 
 secs = time.time()
 time_obj = time.struct_time(time.gmtime(secs))
@@ -12,6 +10,6 @@ hour = time_obj.tm_hour
 minute = time_obj.tm_min
 secs = time_obj.tm_sec
 
-def time1_func():
+def func1():
     aaa = (year, month, day, hour, minute, secs)
     return aaa
