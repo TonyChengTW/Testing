@@ -1,14 +1,10 @@
 __author__ = 'Tony'
 def manuplate(d, key):
-    """
-    Testing Dict
-    :param key:
-    :param s:
-    :param t:
-    :return:
-    """
+    print "print object d ID = " + str(id(d))
     def_d = d.copy()
+    print "print object def_d (copy from d) ID = " + str(id(def_d))
     def_d.pop(key)
+    print "print object d (after pop) ID = " + str(id(d))
     def_d2 = d.copy()
     return def_d, def_d2.keys(), def_d2.values(), def_d2.get(key), def_d2.popitem, def_d2.clear
 
