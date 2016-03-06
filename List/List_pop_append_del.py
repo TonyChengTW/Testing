@@ -11,7 +11,7 @@ print "list (Mutable) object id (append) = " + str(id(list)
 
 del list[2]
 print list
-print id(list)
+print "list (Mutable) object id (del) = " + str(id(list)
 
 
 aaa = 123
