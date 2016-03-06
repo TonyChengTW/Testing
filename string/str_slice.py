@@ -20,4 +20,3 @@ if __name__ == '__main__':
 
     dict = {'d1': 10, 'd2': 20 , 'd3': 30}
     print 'dict =  %(d1)s , %(d2)d , %(d3)s '% dict
-    
