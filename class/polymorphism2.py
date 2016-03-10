@@ -21,12 +21,13 @@ class Player(object):
         pass
 
     def __str__(self):
-        #return 'name = %s , score = %d' % (self._name, self._score)
-        return '%s %s' % (self.__class__,self.get_name())
+        # return 'name = %s , score = %d' % (self._name, self._score)
+        return '%s %s' % (self.__class__, self.get_name())
 
     def __repr__(self):
-        #return 'Player %s' % self.get_name()
-        return '%s %s' % (self.__class__,self.get_name())
+        # return 'Player %s' % self.get_name()
+        return '%s %s' % (self.__class__, self.get_name())
+
 
 class Human(Player):
     def get_move(self):
@@ -37,23 +38,25 @@ class Human(Player):
                     return n
                 else:
                     print('Oops!')
-            except:
+            except Exception():
                 print('Exception: Oops!')
 
+
 class Computer(Player):
-    #def __repr__(self):
+    # def __repr__(self):
     #    return 'Computer %s' % self.get_name()
 
     def get_move(self):
-        return random.randint(1,10)
+        return random.randint(1, 10)
+
 
 def play_undercut(p1, p2):
     p1.reset_score()
     p2.reset_score()
     m1 = p1.get_move()
     m2 = p2.get_move()
-    print('%s move: %d') % (p1.get_name(), m1)
-    print('%s move: %d') % (p2.get_name(), m2)
+    print '%s move: %d' % (p1.get_name(), m1)
+    print '%s move: %d' % (p2.get_name(), m2)
     if m1 == m2 - 1:
         p1.incr_score()
         return p1, p2, '%s wins!' % p1.get_name()
@@ -62,6 +65,7 @@ def play_undercut(p1, p2):
         return p1, p2, '%s wins!' % p2.get_name()
     else:
         return p1, p2, 'draw: no winner'
+
 
 def main():
     while True:
