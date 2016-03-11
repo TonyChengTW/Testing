@@ -11,4 +11,5 @@ print sys.winver
 print sys.prefix
 print sys.platform
 print sys.path_hooks
+print sys.modules
 
