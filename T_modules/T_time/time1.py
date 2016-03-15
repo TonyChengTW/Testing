@@ -15,3 +15,5 @@ secs = time_obj.tm_sec
 def time1_func():
     aaa = (year, month, day, hour, minute, secs)
     return aaa
+
+print time1_func()
