@@ -12,5 +12,5 @@ class Tap(object):
         start_response(status, response_headers)
         return ['%s, %s!\n' % (self.in_arg, 'Tap')]
 
-    def app_factory(global_config, in_arg):
-        return Tap(in_arg)
+def app_factory(global_config, in_arg):
+    return Tap(in_arg)

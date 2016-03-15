@@ -12,5 +12,5 @@ class Shower(object):
         start_response(status, response_headers)
         return ['%s, %s!\n' % (self.in_arg, 'Shower')]
 
-    def app_factory(global_config, in_arg):
-        return Shower(in_arg)
+def app_factory(global_config, in_arg):
+    return Shower(in_arg)

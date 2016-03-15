@@ -12,5 +12,5 @@ class DrinkingFountain(object):
         start_response(status, response_headers)
         return ['%s, %s!\n' % (self.in_arg, 'DrinkingFountain')]
 
-    def app_factory(global_config, in_arg):
-        return DrinkingFountain(in_arg)
+def app_factory(global_config, in_arg):
+    return DrinkingFountain(in_arg)
