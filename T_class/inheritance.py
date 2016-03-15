@@ -14,7 +14,7 @@ class FooChild(FooParent):
 
     def bar(self, message):
         FooParent.bar(self, message)
-        print 'Child bar function.'
+        print 'Child bar D_function.'
         print self.parent
 
 if __name__ == '__main__':

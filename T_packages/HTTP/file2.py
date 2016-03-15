@@ -1,6 +1,6 @@
 from os.path import basename
 import requests
-#import os
+#import T_os
 
 url = 'https://raw.github.com/moskytw/learning-python-from-data-examples/master/sql/schools.csv'
 
@@ -11,8 +11,8 @@ def save(url, path=None):
     with open(path, 'w') as f:
         f.write(requests.get(url).content)
 
-#print 'os.getcwd=', os.getcwd()
-#print os.getcwd().split('/')
-#print basename(os.getcwd())
+#print 'T_os.getcwd=', T_os.getcwd()
+#print T_os.getcwd().split('/')
+#print basename(T_os.getcwd())
 
 save(url)

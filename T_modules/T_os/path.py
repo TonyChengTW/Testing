@@ -2,10 +2,10 @@ __author__ = 'Tony'
 
 import os, time, datetime
 
-filepath = 'D:/source/Testing/modules/os/path.py'
+filepath = '/root/Testing/T_modules/T_os/path.py'
 
 print 'cwd= ' + os.getcwd()
-print 'listdir = ' , os.listdir('D:/source/Testing')
+print 'listdir = ' , os.listdir('/root/Testing')
 print 'isfile = ' + str(os.path.isfile(filepath))
 print 'isdir = ' + str(os.path.isdir(filepath))
 print 'basename= ' + os.path.basename(filepath)
