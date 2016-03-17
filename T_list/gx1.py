@@ -22,7 +22,6 @@ print l[:10]
 print l[3:]
 print l[-10:]
 print l[:20:2]
-
 print 'comprehasion:\n'
 a = [x*2 for x in l]
 print a
