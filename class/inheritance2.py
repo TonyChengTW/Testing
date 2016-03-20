@@ -9,12 +9,12 @@ class FooParent(object):
 
 class FooChild(FooParent):
     def __init__(self):
-        FooParent.__init__(self)
+        super(FooChild, self).__init__()
         print 'Child'
 
     def bar(self, message):
-        FooParent.bar(self, message)
-        print 'Child bar D_function.'
+        super(FooChild, self).bar(message)
+        print 'Child bar function.'
         print self.parent
 
 if __name__ == '__main__':
