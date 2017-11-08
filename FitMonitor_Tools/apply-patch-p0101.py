@@ -60,9 +60,9 @@ def apply_patch(grafana_basedir, dashboard_jsondir, notification_htmldir, grafan
                                         notification_edit_fulldir))
         logging.info("copy %s to %s" % (patch_grafanaserver_fullpath, grafanaserver_fulldir))
 
-    #    shutil.copy(patch_hd_fullpath, hd_fulldir)
-    #    shutil.copy(patch_notifi_edit_fullpath, notification_edit_fulldir)
-    #    shutil.copy(patch_grafanaserver_fullpath, grafanaserver_fulldir)
+        shutil.copy(patch_hd_fullpath, hd_fulldir)
+        shutil.copy(patch_notifi_edit_fullpath, notification_edit_fulldir)
+        shutil.copy(patch_grafanaserver_fullpath, grafanaserver_fulldir)
     else:
         logging.error('The path or file does not exist!')
         raise IOError('The path or file does not exist!')
@@ -74,13 +74,44 @@ def tag_cdv():
     cdvfile_fullpath = os.path.join(grafana_basedir, cdvfile)
     try:
         with open(cdvfile_fullpath, "a") as cdvfile_handler:
-            cdvfile_handler.write("%s\tFitMonitor-%s-p%s" % (datetime,
+            cdvfile_handler.write("%s\tFitMonitor-%s-p%s\n" % (datetime,
                                                              release_version,
                                                              patch_version))
     except:
         logging.error("The cdv file:%s does not exist or can not open" % cdvfile_fullpath)
     logging.info("patch version appended into cdv!")
 
+def stop_grafana():
+    check_cmd = '/usr/bin/stat /proc/1/exe | grep systemd | wc -l'
+    try:
+        output_check = subprocess.check_output(check_cmd, shell=True,
+                                               stderr=subprocess.STDOUT)
+        check_systemd = output_check.strip()
+    except subprocess.CalledProcessError:
+        raise SystemError("cloud not run this command: %s" % check_cmd)
+
+    if check_systemd == '0':
+        print("systemV/Upstart : stop grafana-server...")
+        stop_cmd = 'service grafana-server stop'
+        try:
+            output_stop = subprocess.check_output(stop_cmd, shell=True,
+                                                     stderr=subprocess.STDOUT)
+            logging.info("output_stop = %s" % output_stop)
+        except subprocess.CalledProcessError:
+            raise SystemError("cloud not run this command: %s" % stop_cmd)
+        print("output_restart = %s" % output_stop)
+    elif check_systemd == '1':
+        print("systemd : stop grafana-server...")
+        stop_cmd = 'systemctl stop grafana-server'
+        try:
+            output_stop = subprocess.check_output(stop_cmd, shell=True,
+                                                     stderr=subprocess.STDOUT)
+            logging.info("output_stop = %s" % output_stop)
+        except subprocess.CalledProcessError:
+            logging.error("cloud not run this command: %s" % stop_cmd)
+            raise SystemError("cloud not run this command: %s" % stop_cmd)
+        logging.info("output_stop = %s" % output_stop)
+    return 0
 
 def restart_grafana():
     check_cmd = '/usr/bin/stat /proc/1/exe | grep systemd | wc -l'
@@ -117,6 +148,7 @@ def restart_grafana():
 
 def main():
     logging.info("\n++++++++++++++++++++++++++\nBegin to patch FitMonitor....")
+    stop_grafana()
     apply_patch(grafana_basedir,
                 dashboard_jsondir,
                 notification_htmldir,
