@@ -32,14 +32,16 @@ class DBManager(object):
 connection = "mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
      'root', 'Abc12345', '127.0.0.1', '3306', 'sdnms_api')
 
-# dbmgr = DBManager('mysql+pymysql://root:Abc12345@127.0.0.1:3306/sdnms_api')
+# dbmgr = DBManager('mysql+pymysql://root:Abc12345@127.0.0.1:3306/tonytest')
 dbmgr = DBManager(connection)
 # pdb.set_trace()
 dbmgr.setup()
 
 session = dbmgr.session()
-# new_user = User(id='5', name='Bob')
-# session.get_list(new_user)
-# session.add(new_user)
-# session.commit()
+new_addr = fam.FirewallAddressModel(id='5', name='Bob', content='test', interface='test', comment='')
+
+# pdb.set_trace()
+session.begin()
+session.add(new_addr)
+session.commit()
 session.close()
