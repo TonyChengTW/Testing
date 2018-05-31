@@ -39,18 +39,3 @@ class FirewallAddressModel(SAModel):
             models = query.all()
 
         return models
-
-class FirewallAddress2Model(SAModel):
-    __tablename__ = 'firewall_address2'
-
-    ida = sa.Column(sa.Integer, primary_key=True)
-    namea = sa.Column(sa.String(255), nullable=False, unique=True)
-    contenta = sa.Column(sa.String(255), nullable=False)
-    interfacea = sa.Column(sa.String(15), nullable=False)
-    commenta = sa.Column(sa.Text)
-
-    def __init__(self, namea, contenta, interfacea, commenta):
-        self.namea = namea
-        self.contenta = contenta
-        self.interfacea = interfacea
-        self.commenta = commenta
